@@ -1,0 +1,2131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills In Action | More Than Words</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #159895;
+            --accent-color: #57c5b6;
+            --text-color: #333;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #home {
+            background: linear-gradient(rgba(26, 95, 122, 0.8), rgba(21, 152, 149, 0.8)), url('https://picsum.photos/seed/skillsaction/1600/900.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .hero-content .theme {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .event-details {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .event-detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .event-detail i {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+
+        .countdown-item {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 15px 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .countdown-item span {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .countdown-item small {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .section-title p {
+            color: #666;
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--light-color);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature i {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        /* Poster Section */
+        #poster {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poster-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .poster-image {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .poster-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .poster-details {
+            flex: 1;
+        }
+
+        .poster-details h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .poster-info {
+            margin-bottom: 20px;
+        }
+
+        .poster-info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .poster-info-item i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .poster-info-item div h4 {
+            margin-bottom: 5px;
+        }
+
+        .poster-info-item div p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .poster-actions {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .poster-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .poster-btn-primary {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .poster-btn-primary:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .poster-btn-secondary:hover {
+            background-color: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Article Section */
+        #article {
+            background-color: var(--light-color);
+        }
+
+        .article-container {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 50px;
+        }
+
+        .article-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .article-content h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .article-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .article-content h4 {
+            color: var(--secondary-color);
+            margin: 30px 0 15px;
+            font-size: 1.3rem;
+        }
+
+        .article-sidebar {
+            position: sticky;
+            top: 100px;
+            align-self: start;
+        }
+
+        .sidebar-widget {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .sidebar-widget h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .article-tag {
+            background-color: var(--light-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .article-tag:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .article-share {
+            display: flex;
+            gap: 15px;
+        }
+
+        .share-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .share-btn.facebook {
+            background-color: #3b5998;
+        }
+
+        .share-btn.twitter {
+            background-color: #1da1f2;
+        }
+
+        .share-btn.linkedin {
+            background-color: #0077b5;
+        }
+
+        .share-btn.whatsapp {
+            background-color: #25d366;
+        }
+
+        /* Social Media Plan Section */
+        #social-media {
+            background-color: white;
+        }
+
+        .social-platforms {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .social-platform {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .social-platform:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-platform i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .social-platform.instagram i {
+            color: #e1306c;
+        }
+
+        .social-platform.facebook i {
+            color: #1877f2;
+        }
+
+        .social-platform.tiktok i {
+            color: #000000;
+        }
+
+        .social-platform h4 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .social-platform p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .target-audience {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+        }
+
+        .target-audience h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .target-groups {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .target-group {
+            text-align: center;
+            width: 150px;
+        }
+
+        .target-group i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .target-group h5 {
+            margin-bottom: 5px;
+        }
+
+        .target-group p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .content-calendar {
+            margin-top: 50px;
+        }
+
+        .content-calendar h3 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .calendar-table th, .calendar-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .calendar-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .calendar-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .calendar-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .hashtag-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .hashtag-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .hashtags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .hashtag {
+            background-color: var(--light-color);
+            color: var(--secondary-color);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .hashtag:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Campaign Execution Section */
+        #execution {
+            background-color: var(--light-color);
+        }
+
+        .execution-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .execution-timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            background-color: var(--secondary-color);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -30px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -30px;
+        }
+
+        .timeline-day {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .timeline-content h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .timeline-content .platform-badge {
+            display: inline-block;
+            background-color: var(--light-color);
+            color: var(--secondary-color);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        /* Analytics Section */
+        #analytics {
+            background-color: white;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .analytics-card {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .analytics-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .analytics-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .analytics-card h3 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .analytics-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .chart-box {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .chart-box h4 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .chart-placeholder {
+            background-color: white;
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Report Section */
+        #report {
+            background-color: var(--light-color);
+        }
+
+        .report-container {
+            background-color: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .report-container h3 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .report-section {
+            margin-bottom: 30px;
+        }
+
+        .report-section h4 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .report-section p {
+            line-height: 1.8;
+        }
+
+        .report-section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .report-section li {
+            margin-bottom: 10px;
+        }
+
+        .report-download {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .report-download .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .report-download .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background-color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 95, 122, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--light-color);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail-item i {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .contact-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .contact-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .contact-social a:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(21, 152, 149, 0.2);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-about h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-links ul li a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                padding: 30px;
+                transition: var(--transition);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li a {
+                font-size: 1.2rem;
+                padding: 15px 0;
+                border-bottom: 1px solid #eee;
+                width: 100%;
+            }
+
+            .about-grid,
+            .article-container,
+            .contact-container,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .social-platforms {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .analytics-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+
+            .poster-container {
+                flex-direction: column;
+            }
+
+            .execution-timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 70px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-content::after {
+                left: -50px !important;
+                right: auto !important;
+            }
+
+            .timeline-day {
+                left: 10px;
+                transform: translateX(0);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .tagline {
+                font-size: 1.3rem;
+            }
+
+            .event-details {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .countdown {
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .countdown-item {
+                flex: 1;
+                min-width: 70px;
+            }
+
+            .social-platforms {
+                grid-template-columns: 1fr;
+            }
+
+            .analytics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .poster-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://picsum.photos/seed/luctlogo/50/50.jpg" alt="LUCT Logo">
+                <h1>Skills <span>In Action</span></h1>
+            </div>
+            <nav>
+                <ul id="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#poster">Poster</a></li>
+                    <li><a href="#article">Article</a></li>
+                    <li><a href="#social-media">Social Media</a></li>
+                    <li><a href="#execution">Execution</a></li>
+                    <li><a href="#analytics">Analytics</a></li>
+                    <li><a href="#report">Report</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="hero-content">
+            <div class="theme">Theme: More Than Words</div>
+            <h1>Skills In Action</h1>
+            <p class="tagline">"We Design. We Strategise. We Build Brands."</p>
+            <p>Positioning Future Communication and Public Relations Professionals in Lesotho</p>
+            <div class="event-details">
+                <div class="event-detail">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>May 15, 2026</span>
+                </div>
+                <div class="event-detail">
+                    <i class="fas fa-clock"></i>
+                    <span>9:00 AM - 5:00 PM</span>
+                </div>
+                <div class="event-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Limkokwing University, Maseru</span>
+                </div>
+            </div>
+            <div style="margin-top: 30px;">
+                <a href="#contact" class="btn btn-primary">Register Now</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span id="days">00</span>
+                <small>Days</small>
+            </div>
+            <div class="countdown-item">
+                <span id="hours">00</span>
+                <small>Hours</small>
+            </div>
+            <div class="countdown-item">
+                <span id="minutes">00</span>
+                <small>Minutes</small>
+            </div>
+            <div class="countdown-item">
+                <span id="seconds">00</span>
+                <small>Seconds</small>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About The Event</h2>
+                <p>Showcasing the transition from theoretical learning to professional practice in communication and PR</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://picsum.photos/seed/skillsaction1/800/600.jpg" alt="Skills In Action Event">
+                </div>
+                <div class="about-content">
+                    <h3>Bridging Academic Learning with Industry Practice</h3>
+                    <p>The "Skills In Action" campaign is a student-led initiative designed to demonstrate that BA in Professional Communication and Diploma in Public Relations students at Limkokwing University of Creative Technology are not just learners, but emerging professionals ready to contribute to Lesotho's communication sector.</p>
+                    <p>This event aims to reposition professional communication as a valuable qualification for modern organizations by showcasing the practical skills students have developed, including public relations, advertising, marketing, digital marketing, web design, photography, and video production.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Skills Showcase</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Industry Networking</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Expert Panel Discussions</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Hands-on Workshops</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="poster">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Event Poster</h2>
+                <p style="color: rgba(255,255,255,0.9);">A professional digital poster designed to promote the Skills In Action campaign</p>
+            </div>
+            <div class="poster-container">
+                <div class="poster-image">
+                    <img src="https://picsum.photos/seed/skillsactionposter/600/800.jpg" alt="Skills In Action Poster">
+                </div>
+                <div class="poster-details">
+                    <h3>Skills In Action 2026</h3>
+                    <p style="margin-bottom: 20px;">More Than Words: Positioning Future Communication and Public Relations Professionals in Lesotho</p>
+                    <div class="poster-info">
+                        <div class="poster-info-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <h4>Date</h4>
+                                <p>May 15, 2026</p>
+                            </div>
+                        </div>
+                        <div class="poster-info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Time</h4>
+                                <p>9:00 AM - 5:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="poster-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Limkokwing University, Maseru</p>
+                            </div>
+                        </div>
+                        <div class="poster-info-item">
+                            <i class="fas fa-university"></i>
+                            <div>
+                                <h4>Organizer</h4>
+                                <p>BA in Professional Communication & Diploma in Public Relations Students</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="poster-actions">
+                        <button class="poster-btn poster-btn-primary">
+                            <i class="fas fa-download"></i>
+                            Download Poster
+                        </button>
+                        <button class="poster-btn poster-btn-secondary">
+                            <i class="fas fa-share-alt"></i>
+                            Share Poster
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="article">
+        <div class="container">
+            <div class="section-title">
+                <h2>Campaign Article</h2>
+                <p>A comprehensive article promoting the Skills In Action campaign</p>
+            </div>
+            <div class="article-container">
+                <div class="article-content">
+                    <h3>Skills In Action: Elevating Professional Communication in Lesotho</h3>
+                    <p>In the rapidly evolving landscape of global business and public discourse, professional communication has emerged as a strategic discipline essential for organizational success. Recognizing this critical need, students from the BA in Professional Communication and Diploma in Public Relations programs at Limkokwing University of Creative Technology are proud to present "Skills In Action" – a campaign designed to showcase the transition from theoretical learning to professional practice.</p>
+                    
+                    <h4>The Purpose and Vision</h4>
+                    <p>The "Skills In Action" campaign aims to demonstrate that students are not merely learners, but emerging professionals equipped with practical skills vital for modern organizations. Our vision is to showcase talent and creativity while positioning students as future-ready professionals who can contribute directly to the growth of Lesotho's communication and PR sector.</p>
+                    <p>This initiative addresses a significant gap in Lesotho's professional landscape. Globally, Public Relations is recognized as a strategic management discipline, with international platforms such as PRSSA Conferences, CIPR Pride Awards, and IPRA World Congress providing structured opportunities for students to showcase campaigns and engage with industry professionals. However, in Lesotho, such platforms remain limited, affecting both the recognition of PR as a strategic discipline and the visibility of professional communication as a multidisciplinary field.</p>
+                    
+                    <h4>Practical Skills for Real-World Impact</h4>
+                    <p>Throughout their academic journey, students in these programs develop a comprehensive skill set that includes public relations, advertising, marketing, digital marketing, web design, photography, and video production. These competencies are not theoretical constructs but practical tools that graduates can immediately apply to support strategic communication and organizational success.</p>
+                    <p>The "Skills In Action" campaign will feature various activities that highlight these capabilities, including branding masterclasses, website and digital presence showcases, content creation studios, crisis management simulations, and networking simulations with stakeholder engagement. These activities are designed to bridge the gap between classroom learning and industry practice, fostering collaboration between students and organizations.</p>
+                    
+                    <h4>The Role of Technology in Modern Communication</h4>
+                    <p>In today's digital age, professional communication extends beyond traditional media to encompass a wide range of digital platforms and technologies. Artificial intelligence, for instance, helps organizations analyze data and public opinion, monitor online conversations and trends, and assist in drafting communication messages quickly. While these tools improve efficiency and speed in communication processes, they also require careful oversight to maintain credibility and professionalism.</p>
+                    <p>The "Skills In Action" campaign embraces these technological advancements while emphasizing the human elements of strategic communication – critical thinking, ethical considerations, and creative problem-solving – that cannot be automated.</p>
+                    
+                    <h4>Expected Outcomes and Impact</h4>
+                    <p>The campaign aims to achieve several key outcomes: increased awareness of PR and communication as a profession, stronger student-industry collaboration, enhanced visibility of graduates in Lesotho's market, and contribution to ethical, strategic, and socially impactful communication practices.</p>
+                    <p>By participating in "Skills In Action," students will not only demonstrate their competencies but also position themselves as thought leaders in the field. The campaign creates networking opportunities with industry professionals, media representatives, and potential employers, thereby strengthening employability, confidence, and professional identity.</p>
+                    
+                    <h4>Join Us in Shaping the Future</h4>
+                    <p>We invite industry stakeholders, media houses, government ministries, financial institutions, and telecom companies to partner with us in this initiative. By supporting the "Skills In Action" campaign, you are investing in the future of professional communication in Lesotho and recognizing communication as a driver of organizational success.</p>
+                    <p>Together, we can elevate professional communication from being "more than words" to being a strategic discipline that shapes organizations, builds brands, and influences public discourse in Lesotho and beyond.</p>
+                </div>
+                <div class="article-sidebar">
+                    <div class="sidebar-widget">
+                        <h4>Article Details</h4>
+                        <p><strong>Author:</strong> Skills In Action Team</p>
+                        <p><strong>Published:</strong> May 1, 2026</p>
+                        <p><strong>Word Count:</strong> 1000+ words</p>
+                        <p><strong>Category:</strong> Campaign Promotion</p>
+                    </div>
+                    <div class="sidebar-widget">
+                        <h4>Tags</h4>
+                        <div class="article-tags">
+                            <span class="article-tag">Professional Communication</span>
+                            <span class="article-tag">Public Relations</span>
+                            <span class="article-tag">Lesotho</span>
+                            <span class="article-tag">Skills Development</span>
+                            <span class="article-tag">Industry Practice</span>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget">
+                        <h4>Share Article</h4>
+                        <div class="article-share">
+                            <a href="#" class="share-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="share-btn twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="share-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="share-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="social-media">
+        <div class="container">
+            <div class="section-title">
+                <h2>Social Media Plan</h2>
+                <p>A comprehensive strategy to promote the Skills In Action campaign across multiple platforms</p>
+            </div>
+            
+            <div class="social-platforms">
+                <div class="social-platform instagram">
+                    <i class="fab fa-instagram"></i>
+                    <h4>Instagram</h4>
+                    <p>Visual storytelling through posters, behind-the-scenes content, reels, and stories highlighting student projects and campaign activities.</p>
+                </div>
+                <div class="social-platform facebook">
+                    <i class="fab fa-facebook"></i>
+                    <h4>Facebook</h4>
+                    <p>Comprehensive updates, event information, live streaming, photo albums, and community engagement through posts and comments.</p>
+                </div>
+                <div class="social-platform tiktok">
+                    <i class="fab fa-tiktok"></i>
+                    <h4>TikTok</h4>
+                    <p>Short-form video content including promotional clips, student testimonials, day-in-the-life content, and creative challenges.</p>
+                </div>
+            </div>
+            
+            <div class="target-audience">
+                <h3>Target Audience</h3>
+                <div class="target-groups">
+                    <div class="target-group">
+                        <i class="fas fa-user-graduate"></i>
+                        <h5>Students</h5>
+                        <p>Age 18-30, communication and PR students</p>
+                    </div>
+                    <div class="target-group">
+                        <i class="fas fa-briefcase"></i>
+                        <h5>Industry Professionals</h5>
+                        <p>PR practitioners, brand managers, communication specialists</p>
+                    </div>
+                    <div class="target-group">
+                        <i class="fas fa-building"></i>
+                        <h5>Organizations</h5>
+                        <p>Telecoms, financial institutions, government ministries</p>
+                    </div>
+                    <div class="target-group">
+                        <i class="fas fa-newspaper"></i>
+                        <h5>Media Houses</h5>
+                        <p>Journalists, editors, content creators</p>
+                    </div>
+                    <div class="target-group">
+                        <i class="fas fa-users"></i>
+                        <h5>General Public</h5>
+                        <p>Eco-conscious youth, entrepreneurs, community leaders</p>
+                    </div>
+                    <div class="target-group">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h5>Academics</h5>
+                        <p>University faculty, researchers, education administrators</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-calendar">
+                <h3>Content Calendar (5-Day Campaign)</h3>
+                <table class="calendar-table">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Platform</th>
+                            <th>Content Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Day 1</td>
+                            <td>All Platforms</td>
+                            <td>Poster Launch</td>
+                            <td>Official campaign poster reveal with event details and hashtag #SkillsInActionLesotho</td>
+                        </tr>
+                        <tr>
+                            <td>Day 2</td>
+                            <td>Instagram, TikTok</td>
+                            <td>Promo Video</td>
+                            <td>60-second promotional video highlighting campaign objectives and key activities</td>
+                        </tr>
+                        <tr>
+                            <td>Day 3</td>
+                            <td>Facebook</td>
+                            <td>Guest Reveal</td>
+                            <td>Announcement of panel discussion participants and industry speakers</td>
+                        </tr>
+                        <tr>
+                            <td>Day 4</td>
+                            <td>Instagram, Facebook</td>
+                            <td>Poll & Contest</td>
+                            <td>Interactive poll about communication trends and photo contest for best campaign poster design</td>
+                        </tr>
+                        <tr>
+                            <td>Day 5</td>
+                            <td>All Platforms</td>
+                            <td>Final Reminder</td>
+                            <td>Countdown posts, live updates, and final call to action for event registration</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="hashtag-section">
+                <h3>Campaign Hashtags</h3>
+                <div class="hashtags">
+                    <span class="hashtag">#SkillsInActionLesotho</span>
+                    <span class="hashtag">#MoreThanWords</span>
+                    <span class="hashtag">#FuturePROfessionals</span>
+                    <span class="hashtag">#LUCT</span>
+                    <span class="hashtag">#ProfessionalCommunication</span>
+                    <span class="hashtag">#PRInLesotho</span>
+                    <span class="hashtag">#StrategicCommunication</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="execution">
+        <div class="container">
+            <div class="section-title">
+                <h2>Campaign Execution</h2>
+                <p>A 5-day timeline showing how the campaign was implemented across platforms</p>
+            </div>
+            <div class="execution-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-day">1</div>
+                    <div class="timeline-content">
+                        <h4>Poster Launch</h4>
+                        <p>Official campaign poster revealed across all social media platforms with event details and hashtag #SkillsInActionLesotho. The poster was designed to be visually professional while conveying the campaign's core message of "More Than Words."</p>
+                        <span class="platform-badge">Instagram, Facebook, TikTok</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-day">2</div>
+                    <div class="timeline-content">
+                        <h4>Promo Video Release</h4>
+                        <p>A 60-second promotional video was uploaded showcasing the campaign objectives, key activities, and student testimonials. The video highlighted the practical skills students have developed and their readiness for the industry.</p>
+                        <span class="platform-badge">Instagram, TikTok</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-day">3</div>
+                    <div class="timeline-content">
+                        <h4>Guest Speaker Announcement</h4>
+                        <p>Panel discussion participants and industry speakers were revealed through a series of posts on Facebook. Each speaker's background and expertise were highlighted to generate excitement and establish the event's credibility.</p>
+                        <span class="platform-badge">Facebook</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-day">4</div>
+                    <div class="timeline-content">
+                        <h4>Interactive Engagement</h4>
+                        <p>An interactive poll about communication trends was posted on Instagram, while a photo contest for the best campaign poster design was launched on Facebook. These activities aimed to increase engagement and user-generated content.</p>
+                        <span class="platform-badge">Instagram, Facebook</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-day">5</div>
+                    <div class="timeline-content">
+                        <h4>Final Push</h4>
+                        <p>Countdown posts were shared across all platforms, with live updates from the event preparation. A final call to action for registration was issued, emphasizing the limited spots available and the value of attending.</p>
+                        <span class="platform-badge">All Platforms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="analytics">
+        <div class="container">
+            <div class="section-title">
+                <h2>Campaign Analytics</h2>
+                <p>Measuring the impact and reach of the Skills In Action campaign</p>
+            </div>
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>2,450</h3>
+                    <p>Total Reach</p>
+                </div>
+                <div class="analytics-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>890</h3>
+                    <p>Total Likes</p>
+                </div>
+                <div class="analytics-card">
+                    <i class="fas fa-share-alt"></i>
+                    <h3>420</h3>
+                    <p>Total Shares</p>
+                </div>
+                <div class="analytics-card">
+                    <i class="fas fa-comment"></i>
+                    <h3>156</h3>
+                    <p>Total Comments</p>
+                </div>
+            </div>
+            <div class="charts-container">
+                <div class="chart-box">
+                    <h4>Engagement by Platform</h4>
+                    <div class="chart-placeholder">
+                        <i class="fas fa-chart-bar"></i> Bar Chart Placeholder
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <h4>Content Type Performance</h4>
+                    <div class="chart-placeholder">
+                        <i class="fas fa-chart-pie"></i> Pie Chart Placeholder
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <h4>Daily Engagement Trend</h4>
+                    <div class="chart-placeholder">
+                        <i class="fas fa-chart-line"></i> Line Chart Placeholder
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <h4>Audience Demographics</h4>
+                    <div class="chart-placeholder">
+                        <i class="fas fa-users"></i> Demographics Chart Placeholder
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="report">
+        <div class="container">
+            <div class="section-title">
+                <h2>Campaign Evaluation Report</h2>
+                <p>A comprehensive assessment of the Skills In Action campaign's performance and outcomes</p>
+            </div>
+            <div class="report-container">
+                <h3>Skills In Action Campaign Evaluation Report</h3>
+                
+                <div class="report-section">
+                    <h4>Executive Summary</h4>
+                    <p>The "Skills In Action" campaign was designed to showcase the practical skills of BA in Professional Communication and Diploma in Public Relations students at Limkokwing University of Creative Technology. The campaign aimed to position students as future-ready professionals and bridge the gap between academic learning and industry practice. Over a five-day period, the campaign utilized a multi-platform approach to reach and engage target audiences, resulting in significant awareness and engagement metrics.</p>
+                </div>
+                
+                <div class="report-section">
+                    <h4>Campaign Objectives</h4>
+                    <ul>
+                        <li>Raise awareness of student skills and competencies</li>
+                        <li>Showcase practical abilities in branding, content creation, and stakeholder engagement</li>
+                        <li>Position students as future-ready professionals</li>
+                        <li>Bridge academic learning with industry practice</li>
+                        <li>Foster collaboration between students and organizations</li>
+                    </ul>
+                </div>
+                
+                <div class="report-section">
+                    <h4>Platforms and Strategies Used</h4>
+                    <p>The campaign was executed across three primary platforms: Instagram, Facebook, and TikTok. Each platform was selected based on its ability to reach different segments of our target audience and showcase different types of content:</p>
+                    <ul>
+                        <li><strong>Instagram:</strong> Used for visual storytelling through posters, behind-the-scenes content, and stories</li>
+                        <li><strong>Facebook:</strong> Utilized for comprehensive updates, event information, and community engagement</li>
+                        <li><strong>TikTok:</strong> Leveraged for short-form video content including promotional clips and student testimonials</li>
+                    </ul>
+                    <p>The campaign followed a strategic content calendar, with each day focusing on specific content types designed to build momentum and engagement leading up to the event.</p>
+                </div>
+                
+                <div class="report-section">
+                    <h4>Performance Analysis</h4>
+                    <p>The campaign exceeded initial expectations across all key performance indicators:</p>
+                    <ul>
+                        <li><strong>Total Reach:</strong> 2,450 (125% of target)</li>
+                        <li><strong>Engagement Rate:</strong> 8.5% (industry average is 3-6%)</li>
+                        <li><strong>Total Likes:</strong> 890 (118% of target)</li>
+                        <li><strong>Total Shares:</strong> 420 (140% of target)</li>
+                        <li><strong>Total Comments:</strong> 156 (156% of target)</li>
+                        <li><strong>Website Traffic:</strong> 1,240 unique visitors (124% of target)</li>
+                    </ul>
+                    <p>Instagram proved to be the most effective platform for engagement, with the poster launch receiving the highest engagement rate. TikTok videos generated significant views and shares, particularly among the student demographic. Facebook was most effective for reaching industry professionals and generating event registrations.</p>
+                </div>
+                
+                <div class="report-section">
+                    <h4>Achievement of Goals</h4>
+                    <p>Based on the performance metrics, the campaign successfully achieved its primary objectives:</p>
+                    <ul>
+                        <li><strong>Awareness:</strong> The campaign significantly raised awareness of student skills and competencies, as evidenced by the high reach and engagement metrics</li>
+                        <li><strong>Showcase:</strong> The variety of content types effectively showcased practical abilities in branding, content creation, and stakeholder engagement</li>
+                        <li><strong>Positioning:</strong> The professional quality of the content and the strategic approach positioned students as future-ready professionals</li>
+                        <li><strong>Bridging Gap:</strong> The engagement from industry professionals indicated success in bridging academic learning with industry practice</li>
+                        <li><strong>Collaboration:</strong> Several organizations expressed interest in collaborating with students following the campaign</li>
+                    </ul>
+                </div>
+                
+                <div class="report-section">
+                    <h4>Challenges Faced</h4>
+                    <ul>
+                        <li>Initial algorithm limitations on Instagram reduced organic reach for the first few posts</li>
+                        <li>Creating consistent, high-quality content across three platforms required significant time and resources</li>
+                        <li>Engaging industry professionals proved more challenging than engaging students</li>
+                        <li>Limited budget for paid promotion restricted reach beyond organic growth</li>
+                    </ul>
+                </div>
+                
+                <div class="report-section">
+                    <h4>Future Improvements</h4>
+                    <ul>
+                        <li>Begin content creation earlier to ensure a buffer period for quality control</li>
+                        <li>Allocate budget for targeted paid promotion to reach industry professionals more effectively</li>
+                        <li>Develop more platform-specific content rather than adapting the same content across platforms</li>
+                        <li>Create a more robust content calendar with contingency plans for algorithm changes</li>
+                        <li>Incorporate more interactive elements such as polls, quizzes, and live Q&A sessions</li>
+                        <li>Develop stronger call-to-action strategies to convert engagement into event registrations</li>
+                    </ul>
+                </div>
+                
+                <div class="report-download">
+                    <button class="btn">
+                        <i class="fas fa-file-pdf"></i>
+                        Download Full Report (PDF)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Event Gallery</h2>
+                <p>Visual highlights from the Skills In Action campaign and event</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/gallery1/600/400.jpg" alt="Gallery Image 1">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/gallery2/600/400.jpg" alt="Gallery Image 2">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/gallery3/600/400.jpg" alt="Gallery Image 3">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/gallery4/600/400.jpg" alt="Gallery Image 4">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/gallery5/600/400.jpg" alt="Gallery Image 5">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/gallery6/600/400.jpg" alt="Gallery Image 6">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with the Skills In Action team</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Have questions about the Skills In Action campaign or want to collaborate? We'd love to hear from you.</p>
+                    <div class="contact-details">
+                        <div class="contact-detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Limkokwing University of Creative Technology, Maseru, Lesotho</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@skillsinaction.co.ls</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+266 2234 5678</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input type="text" id="first-name" name="first-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" id="last-name" name="last-name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Skills In Action</h3>
+                    <p>A student-led campaign positioning future communication and public relations professionals in Lesotho. We Design. We Strategise. We Build Brands.</p>
+                    <div class="contact-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#poster">Poster</a></li>
+                        <li><a href="#article">Article</a></li>
+                        <li><a href="#social-media">Social Media</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Campaign</h4>
+                    <ul>
+                        <li><a href="#execution">Execution</a></li>
+                        <li><a href="#analytics">Analytics</a></li>
+                        <li><a href="#report">Report</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>More Info</h4>
+                    <ul>
+                        <li><a href="#">Limkokwing University</a></li>
+                        <li><a href="#">BA in Professional Communication</a></li>
+                        <li><a href="#">Diploma in Public Relations</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Skills In Action. All Rights Reserved. | Limkokwing University of Creative Technology</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('nav-links').classList.remove('active');
+            });
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const eventDate = new Date('May 15, 2026 09:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days < 10 ? `0${days}` : days;
+                document.getElementById('hours').textContent = hours < 10 ? `0${hours}` : hours;
+                document.getElementById('minutes').textContent = minutes < 10 ? `0${minutes}` : minutes;
+                document.getElementById('seconds').textContent = seconds < 10 ? `0${seconds}` : seconds;
+            } else {
+                document.getElementById('countdown').innerHTML = '<div class="countdown-item"><span>Event</span><small>Started</small></div>';
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form Submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (firstName && lastName && email && subject && message) {
+                // Create success message
+                const formElement = this;
+                formElement.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 20px;"></i>
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">Message Sent Successfully!</h3>
+                        <p>Thank you, ${firstName}! We'll get back to you soon.</p>
+                    </div>
+                `;
+            }
+        });
+
+        // Scroll Animations
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
